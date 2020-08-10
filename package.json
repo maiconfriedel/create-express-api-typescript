@@ -1,9 +1,16 @@
 {
   "name": "create-express-api-typescript",
-  "version": "0.0.1",
+  "version": "1.0.3",
   "description": "create-express-api-typescript CLI",
-  "private": true,
   "types": "build/types/types.d.ts",
+  "author": {
+    "name": "Maicon Gabriel Friedel <maicon.friedel@gmail.com>",
+    "email": "maicon.friedel@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maiconfriedel/create-express-api-typescript.git"
+  },
   "bin": {
     "create-express-api-typescript": "bin/create-express-api-typescript"
   },
@@ -12,11 +19,7 @@
     "lint": "tslint -p .",
     "compile": "tsc -p .",
     "build": "yarn format && yarn lint && yarn compile",
-    "prepublishOnly": "yarn build",
-    "test": "jest",
-    "watch": "jest --watch",
-    "snapupdate": "jest --updateSnapshot",
-    "coverage": "jest --coverage"
+    "prepublishOnly": "yarn build"
   },
   "files": [
     "tsconfig.json",
@@ -33,19 +36,12 @@
   },
   "devDependencies": {
     "@types/node": "^12.7.11",
-    "@types/jest": "^24.0.18",
     "ts-node": "^8.4.1",
-    "ts-jest": "^24.1.0",
     "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.6.3",
-    "prettier": "^1.12.1",
-    "jest": "^24.1.0"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
+    "prettier": "^1.12.1"
   },
   "prettier": {
     "semi": false,

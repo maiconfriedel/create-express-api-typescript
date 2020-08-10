@@ -49,5 +49,26 @@ module.exports = (toolbox: GluegunToolbox) => {
         print.error(err.toString())
         return false
       }
+    }),
+    (toolbox.installDependencies = async (
+      projectName: string,
+      useYarn: boolean
+    ) => {
+      const { system, print } = toolbox
+
+      try {
+        print.info('Installing project dependencies...')
+
+        await system.run(
+          `cd ${filesystem.resolve(projectName)} && ${
+            useYarn ? 'yarn' : 'npm install'
+          }`
+        )
+        print.info('Sucessfully installed project dependencies!')
+        return true
+      } catch (err) {
+        print.error(err.toString())
+        return false
+      }
     })
 }

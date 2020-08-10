@@ -4,7 +4,7 @@ const command: GluegunCommand = {
   name: 'create-expres-api-typescript',
   run: async toolbox => {
     const { print, parameters } = toolbox
-    const { first: projectName } = parameters
+    const { first: projectName, options } = parameters
 
     if (!projectName) {
       print.error('Invalid project name!')
@@ -21,14 +21,21 @@ const command: GluegunCommand = {
       const removeGitFolderResponse = await toolbox.removeGitFolder(projectName)
 
       if (removeGitFolderResponse) {
-        const initializeGitRepoResponse = await toolbox.initializeGitRepo(
-          projectName
+        const dependenciesResponse = await toolbox.installDependencies(
+          projectName,
+          options.yarn
         )
-        if (initializeGitRepoResponse) {
-          print.success('Ready to go! 🏁')
-          print.success('To get started, just: ')
-          print.success(`cd ${projectName}`)
-          print.success('npm run dev')
+
+        if (dependenciesResponse) {
+          const initializeGitRepoResponse = await toolbox.initializeGitRepo(
+            projectName
+          )
+          if (initializeGitRepoResponse) {
+            print.success('Ready to go! 🏁')
+            print.success('To get started, just: ')
+            print.success(`cd ${projectName}`)
+            print.success('npm run dev')
+          }
         }
       }
     }
