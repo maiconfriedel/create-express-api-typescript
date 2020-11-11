@@ -21,7 +21,7 @@ yarn global add create-express-api-typescript
 create-express-api-typescript my-awesome-api
 
 # with npx
-npx create-express-api my-awesome-api
+npx create-express-api-typescript my-awesome-api
 
 ```
 
@@ -36,7 +36,7 @@ If you want to use Yarn instead of NPM to install de project dependencies, pass 
 create-express-api-typescript my-awesome-api --yarn
 
 # with npx
-npx create-express-api my-awesome-api --yarn
+npx create-express-api-typescript my-awesome-api --yarn
 
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "create-express-api-typescript",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "create-express-api-typescript CLI",
   "types": "build/types/types.d.ts",
   "author": {

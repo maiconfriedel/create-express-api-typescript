@@ -12,33 +12,21 @@ const command: GluegunCommand = {
       return
     }
 
-    const cloneResponse = await toolbox.gitClone(
+    await toolbox.gitClone(
       'https://github.com/maiconfriedel/express-api-starter-typescript.git',
       projectName
     )
 
-    if (cloneResponse) {
-      const removeGitFolderResponse = await toolbox.removeGitFolder(projectName)
+    await toolbox.removeGitFolder(projectName)
 
-      if (removeGitFolderResponse) {
-        const dependenciesResponse = await toolbox.installDependencies(
-          projectName,
-          options.yarn
-        )
+    await toolbox.installDependencies(projectName, options.yarn)
 
-        if (dependenciesResponse) {
-          const initializeGitRepoResponse = await toolbox.initializeGitRepo(
-            projectName
-          )
-          if (initializeGitRepoResponse) {
-            print.success('Ready to go! 🏁')
-            print.success('To get started, just: ')
-            print.success(`cd ${projectName}`)
-            print.success('npm run dev')
-          }
-        }
-      }
-    }
+    await toolbox.initializeGitRepo(projectName)
+
+    print.success('Ready to go! 🏁')
+    print.success('To get started, just: ')
+    print.success(`cd ${projectName}`)
+    print.success('npm run dev')
   }
 }
 
